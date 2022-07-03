@@ -1,0 +1,9 @@
+Once you open and run this Web Application "Popeye Marina.sln" file on Visual Studio 2017, follow the steps below:
+
+Login using the following credentials:
+Username: user@test.com
+Password: Abcd1234$
+
+You can also simply click on REGISTER to create a new user account.
+
+You will not need a MS-SQL Database to use this application as it uses MS-SQL Local DB (local database model file).

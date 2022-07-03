@@ -1,0 +1,155 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Popeye_Marina.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Popeye Marina</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                   <img src="/Images/Logo.png" alt="logo" height="100" width="200" /> 
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" style="vertical-align: top" >
+                        <li style="font-size: 18px"><a runat="server" href="~/" style="padding: 40px 15px 15px 15px">Home</a></li>
+                        <li style="font-size: 18px"><a runat="server" href="~/Services" style="padding: 40px 15px 15px 15px">Services</a></li>
+                        <li style="font-size: 18px"><a runat="server" href="~/About" style="padding: 40px 15px 15px 15px">About</a></li>
+                        <li style="font-size: 18px"><a runat="server" href="~/Contact" style="padding: 40px 15px 15px 15px">Contact</a></li>
+                    </ul>
+                    
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li style="font-size: 18px"><a runat="server" href="~/Account/Register" style="padding: 40px 15px 15px 15px">Register</a></li>
+                                <li style="font-size: 18px"><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li style="font-size: 18px"><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li style="font-size: 18px">
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                                 <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" runat="server" href="~/#" style="padding: 40px 15px 15px 15px; font-size: 18px;">Admin<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li style="font-size: 16px"><a runat="server" href="~/Customer" style="padding: 20px 15px 15px 15px">Manage Customer</a></li>
+                                <li style="font-size: 16px"><a runat="server" href="~/Lease" style="padding: 20px 15px 15px 15px">Manage Lease</a></li>
+                                <li style="font-size: 16px"><a runat="server" href="~/Boats" style="padding: 20px 15px 15px 15px">Manage Boats</a></li>
+                                <li style="font-size: 16px"><a runat="server" href="~/Slips" style="padding: 20px 15px 15px 15px">Manage Slips</a></li>
+                                <li style="font-size: 16px"><a runat="server" href="~/Docks" style="padding: 20px 15px 15px 15px">Manage Docks</a></li>
+                                <li style="font-size: 16px"><a runat="server" href="~/Rates" style="padding: 20px 15px 15px 15px">Manage Rates</a></li>
+                            </ul>
+                        </li>
+
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+                   
+        <div class="container body-content">
+           <section class="maincontent"> 
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </section>
+            <hr />
+            <footer>
+
+              <div class="row">
+                <div class="col-md-4">
+                    
+                    <h4>Subscribe</h4> 
+                                              
+                    <div class="input-group">
+                        <asp:TextBox ID="subbox" runat="server" CssClass="form-control"></asp:TextBox>
+                         <asp:Label ID="resultlabel" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                        <br />
+                        <asp:Button ID="buttonSub" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="addSub" />
+                        <asp:SqlDataSource ID="SqlDataSourceSub" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM [Subscribe] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Subscribe] ([Email]) VALUES (@Email)" SelectCommand="SELECT * FROM [Subscribe]" UpdateCommand="UPDATE [Subscribe] SET [Email] = @Email WHERE [Id] = @Id">
+                            <DeleteParameters>
+                                <asp:Parameter Name="Id" Type="Int32" />
+                            </DeleteParameters>
+                            <InsertParameters>
+                                <asp:ControlParameter ControlID="subbox" Name="Email" PropertyName="Text" Type="String" />
+                            </InsertParameters>
+                            <UpdateParameters>
+                                <asp:Parameter Name="Email" Type="String" />
+                                <asp:Parameter Name="Id" Type="Int32" />
+                            </UpdateParameters>
+                            </asp:SqlDataSource>
+                    </div>
+                    
+                    
+                    <h4>&nbsp;</h4>
+                    <h4>Contact us</h4>
+           
+                    <address style="float: left">
+                    Olive Oyl Lakes<br />
+                    Brutus, NSW 2017, Australia <br />
+                    <abbr title="Phone">P:</abbr>
+                    0412345600
+                    </address>
+                    <br />
+                    <br />
+                    <br /> 
+                    <br />
+                    <address>
+                        <strong>Email us:</strong>   <a href="mailto:popeyemarina@pmarina.com">popeyemarina@pmarina.com</a><br />
+                    </address>
+
+                </div>
+
+                <div class="col-md-8">
+                    <h4>Find us</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13284.947130436842!2d151.2891327!3d-33.6510261!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf7d1b9103b2bfa66!2sThe+Quays+Marina!5e0!3m2!1sen!2sau!4v1484013024508" style="width: 100%; height: 200px;" allowfullscreen></iframe>
+                    <br /> 
+                    <p>&copy; <%: DateTime.Now.Year %> - Popeye Marina PTY LTD </p>
+                </div>
+                 
+                </div>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

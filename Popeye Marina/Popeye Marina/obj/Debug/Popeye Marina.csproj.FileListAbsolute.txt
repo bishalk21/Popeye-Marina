@@ -1,0 +1,2 @@
+E:\oop 2\Popeye Marina\Popeye Marina\obj\Debug\Popeye Marina.csprojAssemblyReference.cache
+E:\oop 2\Popeye Marina\Popeye Marina\obj\Debug\Popeye Marina.csproj.CoreCompileInputs.cache
